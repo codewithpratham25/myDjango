@@ -8,9 +8,10 @@ def index(request):
         'newyear': now.month == 1 and now.day == 1
     })
 def days(request):
-    now = date(2024,10,6)
-    ndate = date(2025,1,1)
-    delta = ndate - now
+    now = date.today()
+    n_date = date(2025,1,1)
+    delta = n_date - now
+    days_left = delta.days
     return render(request,'newyear/index.html',{
-        'delta': delta
+        'delta': days_left
     })

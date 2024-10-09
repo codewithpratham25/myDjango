@@ -1,0 +1,1 @@
+create table flights(id int)
