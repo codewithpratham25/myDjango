@@ -1,0 +1,11 @@
+{%extends 'trains/layout.html'%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'trains/styles.css'%}">
+{%block body%}
+    <h2>Stations</h2>
+    <ul>
+        {%for station in stations%}
+            <li>{{station.code}} : {{station.city}}</li>
+         {%endfor%}
+    </ul>
+{%endblock%}

@@ -1,0 +1,16 @@
+{%extends 'trains/layout.html'%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'trains/styles.css'%}">
+{%block body%}
+    <h2>Trains</h2>
+    <ul>
+        {%for train in trains%}
+            <li>
+                <a href="{%url 'train' train.id%}">
+                    Train {{train.TrainNo}}: {{train.TrainName}} ---> {{train.org}} to {{train.desti}} Arrv: {{train.arrv_time}} Depart: {{train.depart_time}}
+                </a>
+            </li>
+        {%endfor%}
+    </ul>
+    <button id="button"><a href="{%url 'station'%}">Check Stations</a></button>
+{%endblock%}

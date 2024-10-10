@@ -1,0 +1,43 @@
+{%extends 'trains/layout.html'%}
+{%load static%}
+{%block body%}
+    <h1>Train No : {{train.TrainNo}} {{train.TrainName}}</h1>
+    <table>
+        <tr>
+            <td>Origin :<td>
+            <td>{{train.org}}</td>
+        </tr>
+        <tr>
+            <td>Destination :<td>
+            <td>{{train.desti}}</td>
+        </tr>
+        <tr>
+            <td>Arrival Time :<td>
+            <td>{{train.arrv_time}}</td>
+        </tr>
+        <tr>
+            <td>Departure :<td>
+            <td>{{train.depart_time}}</td>
+        </tr>
+    </table>
+    <h2>Passengers</h2>
+        {%for passenger in passengers%}
+            <li>{{passenger}} </li>
+        {%empty%}
+            <li>No passenger in the Train yet.</li>
+        {%endfor%}
+    <h2>Add Passenger</h2>
+        <form action="{%url 'book' train.id%}" method="post">
+            {%csrf_token%}
+            <select name="passenger" id="">
+                {%for passenger in non_passengers%}
+                    <option value="{{passenger.id}}">{{passenger}}</option>
+                {%endfor%}
+            </select>
+            <input type="submit" value="Submit">
+
+        </form>
+        <a href="{%url 'index'%}">Go Back to Train List</a><br>
+        <a href="{%url 'station'%}">Check Stations</a>
+{%endblock%}
+
